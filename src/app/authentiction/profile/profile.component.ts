@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,7 +13,7 @@ export class ProfileComponent implements OnInit {
   profileDetail: any = {};
   IsProfileDisable: boolean = false;
   loading = false;
-  constructor(private formBuilder: FormBuilder, private router: Router,) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private angularFireAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.loadForm();
@@ -57,7 +58,14 @@ export class ProfileComponent implements OnInit {
   }
 
   redirectToDashboard() {
-    //Implement the Login logic If already user then login else create profile
-    this.router.navigate(['/shoppingCart/list']);
+    const formData = this.profileForm.value;
+    let fullName = formData.firstName + " " + formData.lastName;
+    this.angularFireAuth.user.subscribe(res =>{
+      res.updateProfile({
+        displayName: fullName
+      }).then(() => {
+        this.router.navigate(['/shoppingCart/list']);
+      });
+    });
   }
 }

@@ -9,3 +9,10 @@
     overflow: auto;    
 }
 
+.card.card-body button.btn.btn-primary {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.logoimgtext { margin-bottom: 50px;     font-size: 40px;}
+

@@ -53,9 +53,6 @@ export class AddItemComponent implements OnInit {
   }
 
   setItemData() {
-    // Set Profile detail 
-    console.log(this.detail.payload.doc.data().id, "this.detail.payload.doc.data().id");
-    console.log(this.detail.payload.doc.id, "Suchin Id");
     this.itemFormGroup.setValue({
       itemCategory: this.detail.payload.doc.data().categoryId,
       name: this.detail.payload.doc.data().name,

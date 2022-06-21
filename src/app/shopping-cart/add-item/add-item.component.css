@@ -1,0 +1,12 @@
+
+.modal-content.addbgcolor.back_clr { border: 0px;}
+
+.modal-header.headbg { background-color: #323639 !important;     
+    padding: 5px 18px 11px 18px;
+    display: flex;
+    align-items: center; }
+
+    .modal-body.spacesing { padding: 20px 25px;}
+
+    .modal-body.spacesing .form-control { background-color: #323639 !important; border: none; color: #fff;}
+    .modal-body.spacesing label { color: #767d82;}

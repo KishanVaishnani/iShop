@@ -26,7 +26,7 @@ export class ShoppingListComponent implements OnInit {
 
   // Upload new document
   appendItemDetail() {
-    const modalRef = this.modalService.open(AddItemComponent, { size: 'lg', backdrop: 'static', keyboard: false });
+    const modalRef = this.modalService.open(AddItemComponent, { size: 'md', backdrop: 'static', keyboard: false });
     modalRef.result.then((data) => {
       // this.loadData();
     })

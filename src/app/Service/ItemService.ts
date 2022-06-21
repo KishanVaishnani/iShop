@@ -1,9 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs';
-import { environment } from 'src/environments/environment';
-
 
 
 @Injectable({
@@ -12,7 +9,6 @@ import { environment } from 'src/environments/environment';
 export class ItemService {
     // apiUrl = environment.apiUrl;
     constructor(private firestore: AngularFirestore,) { }
-
     createItem(data) {
         return new Promise<any>((resolve, reject) => {
             this.firestore

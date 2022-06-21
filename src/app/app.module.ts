@@ -16,6 +16,7 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
 import { ToastrModule } from 'ngx-toastr';
 import { categoryName } from './util/enumPipe';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 
@@ -33,6 +34,7 @@ import { categoryName } from './util/enumPipe';
     FormsModule,
     ReactiveFormsModule,
     ShoppingCartModule,
+    AngularFireAuthModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       closeButton: true,

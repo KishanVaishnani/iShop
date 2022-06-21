@@ -1,17 +1,21 @@
-<nav class="navbar navbar-expand-md fixed-top bg-light shadow">
-    <div class="navbar-nav ml-auto">
-        <div class="nav-item dropdown">    
-            <!-- <app-header-menu
-            #ktHeaderMenu
-            id="kt_header_menu"
-            class="header-menu header-menu-mobile"
-           
-          ></app-header-menu> -->
-            <div class="dropdown-menu">
-                <a class="dropdown-item" (click)="Logout()">Logout</a>
-                <!-- <a class="dropdown-item">Link 2</a>
-                    <a  class="dropdown-item">Link 3</a> -->
-            </div>
-        </div>
+
+<nav class="navbar navbar-expand-sm fixed-top back_clr">
+    <a class="navbar-brand" href="#">iShop</a>
+    <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mynavs mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Shopping List</a>
+        </li>
+     
+       
+   
+      </ul>
+      <form class="form-inline cdscsd my-2 my-md-0">
+        <a href="#" (click)="Logout()">Logout</a>
+      </form>
     </div>
-</nav>
+  </nav>

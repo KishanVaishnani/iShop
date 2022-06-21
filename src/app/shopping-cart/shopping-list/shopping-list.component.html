@@ -2,10 +2,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <h3>Shopping List</h3>
+        <div class="col-2 align-self-center">
+            <h3 class="shopping-text">Shopping List</h3>
         </div>
-        <div class="col-3">
+        <div class="col-2 align-self-center">
             <select class="form-control" name="gender">
                 <option value="">All Category</option>
                 <option *ngFor="let category of categoryTypeList" [value]="category.id">
@@ -13,7 +13,7 @@
                 </option>
             </select>
         </div>
-        <div class="col-6">
+        <div class="col-8">
             <button class="btn btn-primary float-right" (click)="appendItemDetail()">
                 Add Item
             </button>
@@ -22,9 +22,9 @@
     <div class="m_t_20">
     </div>
     <div *ngFor="let item of itemList">
-        <div class="back_clr card card-body">
+        <div class="back_clr card card-body text-alls">
             <div class="row">
-                <div class="col-10">
+                <div class="col-10 align-self-center">
                     <p>
                         {{item.payload.doc.data().categoryId}}
                     </p>
@@ -37,9 +37,11 @@
                         {{item.payload.doc.data().description}}
                     </p>
                 </div>
-                <div class="col-2 m_t_40">
-                    <span class="m_l_40" (click)="update(item)"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true" ></i></span>
+                <div class="col-2 align-self-center">
+                    <div class="iconsright">
+                    <span class="" (click)="update(item)"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true" ></i></span>
                     <span (click)="deleteItem(item)"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
+                </div>
                 </div>
             </div>
         </div>
