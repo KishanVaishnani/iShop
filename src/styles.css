@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+.header_login {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    /* border-bottom: 1px solid #e9ecef; */
+    padding-bottom: 15px;
+}
+
+.formcontainer {
+    background-color: black;
+}
+
+.back_clr {
+    background-color: #1f2224 !important; 
+    color: white !important;
+}
+
+.m_t_20
+{
+margin-top: 20px;
+}
+
+.m_t_40
+{
+    margin-top: 40px;
+}
+.m_l_40
+{
+    margin-left: 40px;
+}
+.clr_white
+{
+    color: white;
+}

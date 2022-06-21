@@ -1,0 +1,5 @@
+.scrollToContent {
+    overflow-y: scroll;
+    height: calc(100vh - 5.5rem);
+    margin-top: 2px;
+}

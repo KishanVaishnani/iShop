@@ -1,0 +1,64 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="modal-title h4" id="example-modal-sizes-title-lg">
+            <ng-container>
+                <ng-container>Add</ng-container>
+                Item
+            </ng-container>
+        </div>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="overlay overlay-block cursor-default modal-body">
+        <ng-container>
+            <form action="#" class="form form-label-right" [formGroup]="itemFormGroup">
+                <div class="form-group row">
+                    <div class="col-xl-12">
+                        <label class="form-label">Category <span class="clr_red"> *</span></label>
+                        <select class="form-control" name="itemCategory" formControlName="itemCategory"
+                            [class.is-invalid]="isControlInvalid('itemCategory')">
+                            <option value="">All Category</option>
+                            <option *ngFor="let category of categoryTypeList" [value]="category.id">
+                                {{ category.name }}
+                            </option>
+                            <!-- <option value="1">Frute</option>
+                            <option value="2">Washing</option>
+                            <option value="3">Cleaning</option> -->
+                        </select>
+                        <div class="invalid-feedback" *ngIf="controlHasError('required', 'itemCategory')">The Category
+                            is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xl-12">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control form-control-lg" name="text" autocomplete="off"
+                            placeholder="Enter your first name" [class.is-invalid]="isControlInvalid('name')"
+                            formControlName="name" />
+                        <div class="invalid-feedback" *ngIf="controlHasError('required', 'name')">The name
+                            is required
+                        </div>
+                        <!-- <div class="invalid-feedback" *ngIf="controlHasError('required', 'name')">The first name is required</div> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label>Description</label>
+                        <textarea class="form-control form-control-lg " type="textarea" formControlName="description"
+                            placeholder="Enter description" rows="10" name="description" [class.is-invalid]="isControlInvalid('description')"></textarea>
+                        <div class="invalid-feedback" *ngIf="controlHasError('required', 'description')">The description
+                            is required
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+    <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-light btn-elevate mr-2" (click)="modal.dismiss()">Cancel</button> -->
+        <ng-container>
+            <button type="submit" class="btn btn-primary btn-elevate" (click)="save()"
+                [disabled]="itemFormGroup.invalid">Save</button>
+        </ng-container>
+    </div>
+</div>

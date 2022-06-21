@@ -1,0 +1,43 @@
+<div class="loginImage formcontainer">
+    <div class="container">
+        <div class="card card-body back_clr">
+            <!-- <span class="login_logo logo-shadow">
+                <img src="../../../../assets/images/logo.png" class="header_logo" />
+            </span> -->
+            <div>
+                <h3 class="header_login">Welcome Back</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="username">Username <span class="field_Required">*</span></label>
+                            <input type="text" formControlName="username" class="form-control" placeholder="Enter your username"
+                                [class.is-invalid]="isControlInvalid('username')" />
+                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'username')">
+                                Email is required
+                            </div>
+                            <div class="invalid-feedback" *ngIf="controlHasError('email', 'username')">
+                                Email format is incorrect
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password <span class="field_Required">*</span></label>
+                            <input type="password" formControlName="password" class="form-control" placeholder="Enter your password"
+                                [class.is-invalid]="isControlInvalid('password')" />
+                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'password')">
+                                Password is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="loginForm.invalid ||IsLoginDisable" class="btn btn-primary">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Login
+                            </button>                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

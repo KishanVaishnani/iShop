@@ -1,0 +1,18 @@
+<div class="page-wrapper formcontainer clr_white" style="overflow: hidden">    
+    <div class="content" *ngIf="!useLandscape">
+      <app-header></app-header>
+      <div class="content-area">
+        <article class="content-wrap scrollToContent">
+          <router-outlet></router-outlet>
+        </article>
+      </div>
+    </div>  
+    <div class="content" *ngIf="useLandscape">
+      <div class="warning-contant-area">
+        <div class="alert alert-warning">
+          <strong> Please use Landscape mode.</strong>
+          <img src="../../../assets/images/landScapeMode.svg" alt="" class="img-fluid mt-5">
+        </div>
+      </div>
+    </div>
+  </div>

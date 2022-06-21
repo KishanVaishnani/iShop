@@ -1,0 +1,51 @@
+<div class="profileImage formcontainer">
+    <div class="container">
+        <div class="card card-body back_clr">
+            <!-- <span class="login_logo logo-shadow">
+                <img src="../../../../assets/images/logo.png" class="header_logo" />
+            </span> -->
+            <div>
+                <h3 class="header_login">Complete your profile</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="firstName">First name <span class="field_Required">*</span></label>
+                            <input type="text" formControlName="firstName" class="form-control"
+                                placeholder="Enter your first name" [class.is-invalid]="isControlInvalid('firstName')" />
+                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'firstName')">
+                                first name is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">last name <span class="field_Required">*</span></label>
+                            <input type="text" formControlName="lastName" class="form-control"
+                                placeholder="Enter your last name" [class.is-invalid]="isControlInvalid('lastName')" />
+                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'lastName')">
+                                Last name is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span class="field_Required">*</span></label>
+                            <input type="text" formControlName="email" class="form-control"
+                                placeholder="Enter your email" [class.is-invalid]="isControlInvalid('email')" />
+                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'email')">
+                                Email is required
+                            </div>
+                            <div class="invalid-feedback" *ngIf="controlHasError('email', 'email')">
+                                Email format is incorrect
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="profileForm.invalid ||IsProfileDisable" class="btn btn-primary">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Next
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

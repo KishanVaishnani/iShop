@@ -1,0 +1,11 @@
+.profileImage {
+    padding: 16rem 2rem;
+    background-position: 'centerbottom';
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    overflow: auto;    
+}
+
