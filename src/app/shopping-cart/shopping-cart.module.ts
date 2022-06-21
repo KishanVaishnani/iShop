@@ -9,18 +9,23 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { categoryName } from '../util/enumPipe';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
     ShoppingListComponent,
     AddItemComponent,    
+    categoryName,
   ],
   imports: [
     CommonModule,
     ShoppingCartRoutingModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
+    
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],  
   providers: [categoryName]

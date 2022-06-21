@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   Logout()
   {
+    localStorage.setItem("UserId","");
     this.angularFireAuth.signOut();
     this.router.navigate(['/login']);
   }

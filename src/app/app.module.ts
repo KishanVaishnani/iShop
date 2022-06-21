@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 import { ToastrModule } from 'ngx-toastr';
 import { categoryName } from './util/enumPipe';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -26,10 +27,11 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     LoginComponent,
     ProfileComponent,
     LayoutComponent,
-    HeaderComponent    
+    HeaderComponent  ,  
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

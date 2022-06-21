@@ -5,4 +5,5 @@ export interface ItemModel {
     categoryId: number,
     name: string,
     description: string;
+    userId:string;
 }

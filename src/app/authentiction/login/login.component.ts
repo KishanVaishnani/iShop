@@ -63,13 +63,16 @@ export class LoginComponent implements OnInit {
     this.angularFireAuth
       .signInWithEmailAndPassword(formData.username, formData.password)
       .then(res => {
-        if (res.user.displayName == null) {
-          this.router.navigate(['/profile']);
+        if (res) {
+          localStorage.setItem("UserId",res.user.uid);        
+          if (res.user.displayName == null) {
+            this.router.navigate(['/profile']);
+          }
+          else {
+            this.router.navigate(['/shoppingCart/list']);
+          }
+          console.log('You are Successfully logged in!');
         }
-        else {
-          this.router.navigate(['/shoppingCart/list']);
-        }
-        console.log('You are Successfully logged in!');
       })
       .catch(err => {
         this.IsLoginDisable = false;

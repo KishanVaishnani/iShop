@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryType } from 'src/app/Enum/CategoryType';
@@ -10,17 +12,32 @@ import { AddItemComponent } from '../add-item/add-item.component';
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  providers:[categoryName],
+  providers: [categoryName],
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
   loading: boolean = false;
   itemList: any;
+  withoutFilterItemList: any;
   categoryTypeList: any;
-  constructor(private modalService: NgbModal, private itemService: ItemService, private toastr: ToastrService,private categoryName:categoryName) { }
+  userId: any;
+  searchFormGroup: FormGroup;
+  constructor(private modalService: NgbModal, private itemService: ItemService, private toastr: ToastrService, private categoryName: categoryName,
+    private angularFireAuth: AngularFireAuth, private fb: FormBuilder) {
+    this.angularFireAuth.user.subscribe(res => {
+      if (res)
+        this.userId = res.uid;
+    });
+  }
 
   ngOnInit(): void {
-    this.categoryTypeList = ConvertEnumToList(CategoryType)
+    this.searchFormGroup = this.fb.group({
+      CategoryId: ''
+    });
+    this.categoryTypeList = [{ id: 1, name: 'Uninterruptible Power Supply' },
+    { id: 2, name: 'Uninterruptible' },
+    { id: 3, name: 'Power Supply' },
+    { id: 4, name: 'Energy' }]
     this.getItemList();
   }
 
@@ -37,6 +54,7 @@ export class ShoppingListComponent implements OnInit {
       .getItem()
       .subscribe((res) => {
         this.itemList = res;
+        this.withoutFilterItemList = res;
       }
       );
   }
@@ -54,5 +72,16 @@ export class ShoppingListComponent implements OnInit {
     modalRef.result.then((data) => {
       // this.loadData();
     })
+  }
+
+  onSelectionChange() {
+    const formData = this.searchFormGroup.value;
+    if (formData.CategoryId != "") {
+      let id = parseInt(formData.CategoryId);
+      this.itemList = this.withoutFilterItemList.filter(s => s.payload.doc.data().categoryId == id);
+    }
+    else {
+      this.itemList = this.withoutFilterItemList;
+    }
   }
 }

@@ -14,7 +14,8 @@ const EMPTY_ITEMDETAIL: ItemModel = {
   id: null,
   categoryId: undefined,
   name: "",
-  description: ""
+  description: "",
+  userId: ""
 };
 
 
@@ -29,9 +30,12 @@ export class AddItemComponent implements OnInit {
   categoryTypeList: any;
   @Input() detail: any;
   public id: Guid;
-  constructor(private fb: FormBuilder, public modal: NgbActiveModal, private itemService: ItemService, private toastr: ToastrService,) {
-
-
+  userId: any;
+  constructor(private fb: FormBuilder, public modal: NgbActiveModal, private itemService: ItemService, private toastr: ToastrService, private angularFireAuth: AngularFireAuth) {
+    this.angularFireAuth.user.subscribe(res => { 
+      if(res)     
+        this.userId = res.uid;
+    });
   }
 
   ngOnInit(): void {
@@ -40,7 +44,10 @@ export class AddItemComponent implements OnInit {
     if (this.detail != null) {
       this.setItemData();
     }
-    this.categoryTypeList = ConvertEnumToList(CategoryType)
+    this.categoryTypeList = [{ id: 1, name: 'Uninterruptible Power Supply' },
+    { id: 2, name: 'Uninterruptible' },
+    { id: 3, name: 'Power Supply' },
+    { id: 4, name: 'Energy' }]
   }
 
   loadForm() {
@@ -88,6 +95,7 @@ export class AddItemComponent implements OnInit {
     this.itemDetail.categoryId = formData.itemCategory;
     this.itemDetail.name = formData.name;
     this.itemDetail.description = formData.description;
+    this.itemDetail.userId = this.userId;
     let newId: any = Guid.create();
     if (this.detail == undefined) {
       this.itemDetail.id = newId.value;
@@ -112,7 +120,7 @@ export class AddItemComponent implements OnInit {
 
   update() {
     this.prepareItemDetail();
-    this.itemService.updateItem(this.itemDetail).then((res) => {           
+    this.itemService.updateItem(this.itemDetail).then((res) => {
       // this.toastr.success("Item Update successfully");
       this.modal.close();
       alert("Item Update successfully");

@@ -1,15 +1,13 @@
-<!-- <p>shopping-list works!</p> -->
-
 <div class="container">
     <div class="row">
         <div class="col-2 align-self-center">
             <h3 class="shopping-text">Shopping List</h3>
         </div>
-        <div class="col-2 align-self-center">
-            <select class="form-control" name="gender">
+        <div class="col-2 align-self-center" [formGroup]="searchFormGroup">
+            <select class="form-control" name="gender" formControlName="CategoryId" (change)="onSelectionChange()">
                 <option value="">All Category</option>
                 <option *ngFor="let category of categoryTypeList" [value]="category.id">
-                    {{ category.name  }}
+                    {{ category.name }}
                 </option>
             </select>
         </div>
@@ -26,7 +24,7 @@
             <div class="row">
                 <div class="col-10 align-self-center">
                     <p>
-                        {{item.payload.doc.data().categoryId}}
+                        {{item.payload.doc.data().categoryId |categoryName:categoryTypeList}}
                     </p>
                     <span>
                         <h4>
@@ -39,107 +37,13 @@
                 </div>
                 <div class="col-2 align-self-center">
                     <div class="iconsright">
-                    <span class="" (click)="update(item)"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true" ></i></span>
-                    <span (click)="deleteItem(item)"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
+                        <span class="" (click)="update(item)"><i class="fa fa-pencil-square-o fa-2x pr-3"
+                                aria-hidden="true"></i></span>
+                        <span *ngIf="item.payload.doc.data().userId==userId" (click)="deleteItem(item)"><i
+                                class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
+                    </div>
                 </div>
-                </div>
             </div>
         </div>
-        
-    </div>
-    <!-- <div class="back_clr card card-body">
-        <div class="row">
-            <div class="col-10">
-                <p>
-                    Uninterruptible Power Supply
-                </p>
-                <span>
-                    <h4>250-0483:Uninterruptible Power Supply, VRLA-A-AGM,UPS Battery</h4>
-                </span>
-                <p>
-                    12 Volt Uninterruptible Power Supply Battery
-                </p>
-            </div>
-            <div class="col-2 m_t_40">
-                <span class="m_l_40"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true"></i></span>
-                <span><i class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="back_clr card card-body">
-        <div class="row">
-            <div class="col-10">
-                <p>
-                    Uninterruptible Power Supply
-                </p>
-                <span>
-                    <h4>250-0483:Uninterruptible Power Supply, VRLA-A-AGM,UPS Battery</h4>
-                </span>
-                <p>
-                    12 Volt Uninterruptible Power Supply Battery
-                </p>
-            </div>
-            <div class="col-2 m_t_40">
-                <span class="m_l_40"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true"></i></span>
-                <span><i class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
-            </div>
-        </div>
-    </div>
-    <div class="back_clr card card-body">
-        <div class="row">
-            <div class="col-10">
-                <p>
-                    Uninterruptible Power Supply
-                </p>
-                <span>
-                    <h4>250-0483:Uninterruptible Power Supply, VRLA-A-AGM,UPS Battery</h4>
-                </span>
-                <p>
-                    12 Volt Uninterruptible Power Supply Battery
-                </p>
-            </div>
-            <div class="col-2 m_t_40">
-                <span class="m_l_40"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true"></i></span>
-                <span><i class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
-            </div>
-        </div>
-    </div>
-    <div class="back_clr card card-body">
-        <div class="row">
-            <div class="col-10">
-                <p>
-                    Uninterruptible Power Supply
-                </p>
-                <span>
-                    <h4>250-0483:Uninterruptible Power Supply, VRLA-A-AGM,UPS Battery</h4>
-                </span>
-                <p>
-                    12 Volt Uninterruptible Power Supply Battery
-                </p>
-            </div>
-            <div class="col-2 m_t_40">
-                <span class="m_l_40"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true"></i></span>
-                <span><i class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
-            </div>
-        </div>
-    </div>
-    <div class="back_clr card card-body">
-        <div class="row">
-            <div class="col-10">
-                <p>
-                    Uninterruptible Power Supply
-                </p>
-                <span>
-                    <h4>250-0483:Uninterruptible Power Supply, VRLA-A-AGM,UPS Battery</h4>
-                </span>
-                <p>
-                    12 Volt Uninterruptible Power Supply Battery
-                </p>
-            </div>
-            <div class="col-2 m_t_40">
-                <span class="m_l_40"><i class="fa fa-pencil-square-o fa-2x pr-3" aria-hidden="true"></i></span>
-                <span><i class="fa fa-trash fa-2x" aria-hidden="true"></i></span>
-            </div>
-        </div>
-    </div> -->
+    </div>   
 </div>
