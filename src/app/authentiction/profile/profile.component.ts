@@ -61,6 +61,7 @@ export class ProfileComponent implements OnInit {
     const formData = this.profileForm.value;
     let fullName = formData.firstName + " " + formData.lastName;
     this.angularFireAuth.user.subscribe(res =>{
+      localStorage.setItem("UserId", res.uid);
       res.updateProfile({
         displayName: fullName
       }).then(() => {

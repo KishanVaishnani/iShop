@@ -1,9 +1,9 @@
 <div class="profileImage formcontainer">
     <div class="container">
-        <div class="text-center text-white logoimgtext" > iShop </div>
+        <div class="text-center text-white logoimgtext" > <img src="../../../../assets/logo/ishop-logo.png" class="header_logo" />  </div>
         <div class="row justify-content-center">
-            <div class="col-sm-6">
-        <div class="card card-body back_clr">
+            <div class="col-sm-5">
+        <div class="card card-body back_clr formdiv-main">
             <!-- <span class="login_logo logo-shadow">
                 <img src="../../../../assets/images/logo.png" class="header_logo" />
             </span> -->
@@ -12,10 +12,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                    <form class="loginForms" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label for="firstName">First name <span class="field_Required">*</span></label>
-                            <input type="text" formControlName="firstName" class="form-control"
+                            <input type="text" formControlName="firstName" class="form-control controls-custom"
                                 placeholder="Enter your first name" [class.is-invalid]="isControlInvalid('firstName')" />
                             <div class="invalid-feedback" *ngIf="controlHasError('required', 'firstName')">
                                 first name is required
@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="lastName">last name <span class="field_Required">*</span></label>
-                            <input type="text" formControlName="lastName" class="form-control"
+                            <input type="text" formControlName="lastName" class="form-control controls-custom"
                                 placeholder="Enter your last name" [class.is-invalid]="isControlInvalid('lastName')" />
                             <div class="invalid-feedback" *ngIf="controlHasError('required', 'lastName')">
                                 Last name is required
@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email <span class="field_Required">*</span></label>
-                            <input type="text" formControlName="email" class="form-control"
+                            <input type="text" formControlName="email" class="form-control controls-custom"
                                 placeholder="Enter your email" [class.is-invalid]="isControlInvalid('email')" />
                             <div class="invalid-feedback" *ngIf="controlHasError('required', 'email')">
                                 Email is required
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button [disabled]="profileForm.invalid ||IsProfileDisable" class="btn btn-primary">
+                            <button [disabled]="profileForm.invalid ||IsProfileDisable" class="btnbtn-primary">
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                 Next
                             </button>

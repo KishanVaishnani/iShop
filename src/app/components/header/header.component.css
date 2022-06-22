@@ -1,5 +1,10 @@
 
+.newbgcolor { background-color: #232d36; border: 0px; }
+
 a.navbar-brand { color: #fff;     font-size: 24px;}
 ul.navbar-nav.mynavs li a { color: #fff;     font-size: 20px;}
 .form-inline.cdscsd a{ color: #fff;  font-size: 20px;  text-decoration: none;}
 .form-inline.cdscsd a:hover{ text-decoration: none;}
+.h_70{
+    height: 70px;
+}

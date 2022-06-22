@@ -4,15 +4,16 @@
     font-size: 30px;
     font-weight: 500;
     /* border-bottom: 1px solid #e9ecef; */
-    padding-bottom: 15px;
+    padding-bottom:30px;
+    margin: 0px;
 }
 
 .formcontainer {
-    background-color: black;
+    background-color: #152029;
 }
 
 .back_clr {
-    background-color: #1f2224 !important; 
+    background-color: #232d36 !important;  
     color: white !important;
 }
 
@@ -32,4 +33,13 @@ margin-top: 20px;
 .clr_white
 {
     color: white;
+}
+
+.modal-dialog.modal-md .modal-content {background-color: transparent !important;  }
+
+.modal.show .modal-dialog {
+    transform: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }

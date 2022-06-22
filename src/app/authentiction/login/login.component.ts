@@ -49,6 +49,12 @@ export class LoginComponent implements OnInit {
     return control.dirty || control.touched;
   }
 
+  prepareUserLoginDetail() {
+    const formData = this.loginForm.value;
+    this.userDetail.email = formData.username;
+    this.userDetail.password = formData.password;
+  }
+
   onSubmit() {
     this.IsLoginDisable = true;
     // stop here if form is invalid
@@ -59,12 +65,12 @@ export class LoginComponent implements OnInit {
   }
 
   redirectToLogin() {
-    const formData = this.loginForm.value;
+    this.prepareUserLoginDetail();
     this.angularFireAuth
-      .signInWithEmailAndPassword(formData.username, formData.password)
+      .signInWithEmailAndPassword(this.userDetail.email, this.userDetail.password)
       .then(res => {
         if (res) {
-          localStorage.setItem("UserId",res.user.uid);        
+          localStorage.setItem("UserId", res.user.uid);
           if (res.user.displayName == null) {
             this.router.navigate(['/profile']);
           }
@@ -75,13 +81,32 @@ export class LoginComponent implements OnInit {
         }
       })
       .catch(err => {
+        if (err.message.toLowerCase().includes('the user may have been deleted') || err.message.toLowerCase().includes('missing-email')) {
+          this.userSignIn();
+        }        
+        else if (err.message.toLowerCase().includes('the password is invalid')) {
+          alert("Username and Password wrong");
+        }
         this.IsLoginDisable = false;
-        alert("User not found");
-        console.log('Something is wrong:', err.message);
+        // alert("User not found");
       });
 
     //Implement the Login logic If already user then login else create profile
 
+  }
+
+  userSignIn() {
+    this.angularFireAuth
+      .createUserWithEmailAndPassword(this.userDetail.email, this.userDetail.password)
+      .then(res => {
+        console.log('You are Successfully logged in!');
+        if (res.user.displayName == null) {
+          this.router.navigate(['/profile']);
+        }      
+      })
+      .catch(err => {
+        console.log('Something is wrong:', err.message);
+      });
   }
 
 }
